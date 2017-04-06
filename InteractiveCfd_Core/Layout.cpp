@@ -6,19 +6,16 @@
 #include "kernel.h"
 #include <algorithm>
 
-extern const int g_leftPanelWidth(350);
-extern const int g_leftPanelHeight(500);
-
-void Layout::SetUpWindow(Panel &rootPanel)
+void Layout::SetUpWindow(Panel &rootPanel, const int leftPanelHeight, const int leftPanelWidth)
 {
-    const int windowWidth = 1200;
-    const int windowHeight = g_leftPanelHeight+100;
+    const int windowWidth = 1600;
+    const int windowHeight = leftPanelHeight+200;
 
     rootPanel.SetSize_Absolute(RectInt(200, 100, windowWidth, windowHeight));
     rootPanel.m_draw = false;
     rootPanel.SetName("Main Window");
 
-    Panel* const CDV = rootPanel.CreateSubPanel(RectInt(0, 0, g_leftPanelWidth, g_leftPanelHeight), Panel::DEF_ABS,
+    Panel* const CDV = rootPanel.CreateSubPanel(RectInt(0, 0, leftPanelWidth, leftPanelHeight), Panel::DEF_ABS,
         "CDV", Color(Color::DARK_GRAY));
     Panel* const outputsPanel = CDV->CreateSubPanel(RectFloat(-1.f,  -0.9f, 2.f, 0.5f), Panel::DEF_REL,
         "Outputs", Color(Color::DARK_GRAY));
@@ -47,7 +44,7 @@ void Layout::SetUpWindow(Panel &rootPanel)
     viewModePanel->CreateButton(RectFloat(-0.50f, -1.f  +0.04f, 0.35f, 2.f),
         Panel::DEF_REL, "2D", Color(Color::GRAY));
 
-    rootPanel.CreateSubPanel(RectInt(g_leftPanelWidth, 0, windowWidth-g_leftPanelWidth, windowHeight),
+    rootPanel.CreateSubPanel(RectInt(leftPanelWidth, 0, windowWidth-leftPanelWidth, windowHeight),
         Panel::DEF_ABS, "Graphics", Color(Color::RED));
     rootPanel.GetPanel("Graphics")->m_draw = false;
     rootPanel.GetPanel("Graphics")->CreateGraphicsManager();

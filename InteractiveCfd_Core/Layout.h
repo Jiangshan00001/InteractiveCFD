@@ -26,7 +26,7 @@ FW_API void TwoDButtonCallBack(Panel &rootPanel);
 
 namespace Layout
 {
-    FW_API void SetUpWindow(Panel &rootPanel);
+    FW_API void SetUpWindow(Panel &rootPanel, const int leftPanelHeight, const int leftPanelWidth);
     FW_API Slider* GetCurrentContourSlider(Panel &rootPanel);
     FW_API float GetCurrentSliderValue(Panel &rootPanel, const std::string name, const int sliderNumber = 1);
     FW_API float GetCurrentContourSliderValue(Panel &rootPanel, const int sliderNumber = 1);

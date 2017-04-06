@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 {
     Panel* windowPanel = Window::Instance().GetWindowPanel();
 
-    Layout::SetUpWindow(*windowPanel);
+    Layout::SetUpWindow(*windowPanel, 700, 550);
     GraphicsManager* graphicsManager = windowPanel->GetPanel("Graphics")->GetGraphicsManager();
 
     Window::Instance().InitializeGLUT(argc, argv);
